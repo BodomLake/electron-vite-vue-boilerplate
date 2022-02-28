@@ -25,4 +25,6 @@ dist-ssr
 
 /dist
 /electron-dist
+/web-dist
 /release
+/extensions

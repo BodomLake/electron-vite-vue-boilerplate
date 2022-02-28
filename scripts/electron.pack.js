@@ -10,7 +10,7 @@ const Multispinner = require("multispinner");
  */
 const options = {
 	protocols: {
-		name: "Deeplink Example",
+		name: "EVV Boilerplate",
 		// Don't forget to set `MimeType: "x-scheme-handler/deeplink"` for `linux.desktop` entry!
 		schemes: ["deeplink"],
 	},
@@ -21,19 +21,21 @@ const options = {
 
 	nodeGypRebuild: false,
 	buildDependenciesFromSource: false,
-	appId: "org.bodomlake.demo",
-	// ${productName}-${version}.${ext}
-	artifactName: "",
+	appId: "org.bodomlake.evv",
+	// default: ${productName}-${version}.${ext}
+	// artifactName: "",
 	// 文件夹
 	directories: {
 		// output: "../electron-dist/artifacts/local",
+		// 构建输出的目录
 		output: "./electron-dist",
+		// 构建资源目录
 		buildResources: "installer/resources",
 	},
-	files: ["out"],
-	asar: false,
+	files: ["release/bundled/**/*"],
+	// asar: false,
 	// 指定未被asar处理的入口程序js文件
-	asarUnpack: "../../src/main/main.js",
+	// asarUnpack: "../../src/main/main.js",
 	/*
 	extraFiles: [
 		{
@@ -124,6 +126,7 @@ const options = {
 };
 
 // Promise is returned
+console.log(Platform.WINDOWS.createTarget());
 builder
 	.build({
 		targets: Platform.WINDOWS.createTarget(),

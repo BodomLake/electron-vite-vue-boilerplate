@@ -6,7 +6,7 @@ let vue = require("@vitejs/plugin-vue");
 // 提供 Vue 3 JSX 支持
 let vueJsx = require("@vitejs/plugin-vue-jsx");
 // 为打包后的文件提供传统浏览器兼容性支持
-let legacy = require("@vitejs/plugin-legacy");
+// let legacy = require("@vitejs/plugin-legacy");
 let PluginInspect = require("vite-plugin-inspect");
 
 
@@ -24,6 +24,8 @@ let viteConfig = {
 	envFile: false,
 	// vite放置缓存的路径（默认在放在 node_modules/.vite文件夹中）
 	cacheDir: pathResolve("../node_modules/.vite"),
+	// 作为静态资源服务的文件夹
+	publicDir: 'public',
 	// mode: "development" || "production",
 	server: {
 		port: 3060,
@@ -39,13 +41,15 @@ let viteConfig = {
 	plugins: [
 		// 指定vue库
 		vue(),
-		legacy({
-			targets: ["defaults", "not IE 11"],
-		}),
 		vueJsx({
 			// options are passed on to @vue/babel-plugin-jsx
 		}),
 		PluginInspect(),
+		/*
+		legacy({
+			targets: ["defaults", "not IE 11"],
+		}),
+		*/
 	],
 };
 let dev = {

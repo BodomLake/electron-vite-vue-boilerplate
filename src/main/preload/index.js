@@ -27,15 +27,19 @@ window.api = function () {
 };
 // 挂载在浏览器对象(window)上
 window.api2 = api2;
+// If your application's BrowserWindow was created with nodeIntegration set to false 
+// then you will need to expose some globals via a preload script to allow Devtron access to Electron APIs:
+// window.__devtron = { require: require, process: process };
 
+/*
+window.addEventListener("DOMContentLoaded", () => {
+	const replaceText = (selector, text) => {
+		const element = document.getElementById(selector);
+		if (element) element.innerText = text;
+	};
 
-// window.addEventListener("DOMContentLoaded", () => {
-// 	const replaceText = (selector, text) => {
-// 		const element = document.getElementById(selector);
-// 		if (element) element.innerText = text;
-// 	};
-
-// 	for (const type of ["chrome", "node", "electron"]) {
-// 		replaceText(`${type}-version`, process.versions[type]);
-// 	}
-// });
+	for (const type of ["chrome", "node", "electron"]) {
+		replaceText(`${type}-version`, process.versions[type]);
+	}
+});
+*/
